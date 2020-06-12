@@ -4,11 +4,11 @@ import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 
 const name = 'Renon'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'renon.dev - WordPress Front-End Developer'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div class="grid-container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -61,6 +61,9 @@ export default function Layout({ children, home }) {
           </Link>
         </div>
       )}
+      <script type="text/javascript" src="../js/vendor/jquery.js"></script>
+      <script type="text/javascript" src="../js/vendor/what-input.js"></script>
+      <script type="text/javascript" src="../js/vendor/foundation.js"></script>    
     </div>
   )
 }

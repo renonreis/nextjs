@@ -25,3 +25,7 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.grid-container {
+  max-width: 75rem;
+}
