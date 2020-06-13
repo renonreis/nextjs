@@ -8,8 +8,10 @@ export const siteTitle = 'renon.dev - WordPress Front-End Developer'
 
 export default function Layout({ children, home }) {
   return (
-    <div class="grid-container">
+    <div className="off-canvas-wrapper">
       <Head>
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
@@ -23,47 +25,48 @@ export default function Layout({ children, home }) {
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        
       </Head>
-      <header className={styles.header}>
-        {home ? (
-          <>
-            <img
-              src="/images/profile.jpg"
-              className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
+      <div className="off-canvas position-left" id="offCanvas" data-off-canvas>
+        MENU
+      </div>
+      <div className="off-canvas-content" data-off-canvas-content>
+        <div className="grid-container">
+          <header>
+            <div className="grid-x grid-margin-x grid-padding-y align-middle">
+              <div className="cell small-2 large-1">
+                <button type="button" className="button" data-toggle="offCanvas" style={{margin: 0,}}>
+                  <img src="../images/menu.svg" alt="Vercel Logo" className="logo" />
+                </button>
+              </div>
+              <div className="cell small-4 large-3">
+                <Link href="/">
+                  <a>Renon.dev</a>
+                </Link>
+              </div>
+              <div className="cell small-6 large-8">
+                cell
+            </div>
+            </div>
+
+          </header>
+          <main>{children}</main>
+          <footer>
+            {'I`m here to stay'}
+            <script src="/js/vendor/jquery.js"></script>
+            <script src="/js/vendor/what-input.js"></script>
+            <script src="/js/vendor/foundation.min.js"></script>            
+          </footer>
+          {!home && (
+            <div className={styles.backToHome}>
               <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
+                <a>← Back to home</a>
               </Link>
-            </h2>
-          </>
-        )}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
+            </div>
+          )}          
         </div>
-      )}
-      <script type="text/javascript" src="../js/vendor/jquery.js"></script>
-      <script type="text/javascript" src="../js/vendor/what-input.js"></script>
-      <script type="text/javascript" src="../js/vendor/foundation.js"></script>    
+      </div>
     </div>
+
   )
 }
